@@ -59,37 +59,19 @@ jobs:
           set -o pipefail
           cargo build -p tdmodeler-app --features gui 2>&1 | tee gui-build.log
 
-      # On failure, publish the raw build log as a PUBLIC commit comment on
-      # the HEAD commit (via the workflow's own GITHUB_TOKEN, granted
-      # contents:write above). Commit comments on a public repo are readable
-      # through the GitHub API without authentication, so the log can be
-      # fetched and inspected without manual copy/paste.
+      # On failure, push the raw build log to the public `ci-logs` branch
+      # (via the workflow's own GITHUB_TOKEN, granted contents:write above).
+      # It is then retrievable with `git fetch` (git protocol, not subject to
+      # the GitHub REST rate limit) and inspected without manual copy/paste.
       - name: Publish build log on failure
         if: failure()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHA: ${{ github.sha }}
         run: |
-          python3 - <<'PY'
-          import os, json, urllib.request, urllib.error
-          token = os.environ['GITHUB_TOKEN']
-          sha = os.environ['SHA']
-          try:
-              with open('gui-build.log','r',errors='replace') as f:
-                  body = f.read()[-55000:]
-          except Exception as e:
-              body = "no log: %s" % e
-          data = json.dumps({"body": "```\n" + body + "\n```"}).encode()
-          req = urllib.request.Request(
-              "https://api.github.com/repos/124476115/3dwon/commits/%s/comments" % sha,
-              data=data,
-              headers={"Authorization":"Bearer "+token,
-                       "Accept":"application/vnd.github+json",
-                       "User-Agent":"ci"},
-              method="POST")
-          try:
-              with urllib.request.urlopen(req) as r:
-                  print("comment created:", r.status)
-          except urllib.error.HTTPError as e:
-              print("comment failed:", e.code, e.read().decode()[:500])
-          PY
+          git config user.name "ci-bot"
+          git config user.email "ci@github.com"
+          mkdir -p ci-logs
+          cp gui-build.log "ci-logs/gui-build-${{ matrix.os }}.log"
+          git add ci-logs
+          git commit -m "ci: gui build log (${{ matrix.os }})" || true
+          git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/124476115/3dwon.git HEAD:ci-logs || true
