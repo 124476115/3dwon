@@ -4,13 +4,13 @@
 //! Build/run on a desktop target with `--features gui`. This module is not
 //! compiled in headless/CI builds and requires a GPU + display libraries.
 
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use anyhow::Result;
 use glam::Vec3;
 use winit::event::{DeviceEvent, ElementState, Event, MouseButton, WindowEvent};
 use winit::event_loop::{ControlFlow, EventLoop};
-use winit::window::WindowAttributes;
+use winit::window::{Window, WindowAttributes};
 
 use tdmodeler_core::features;
 use tdmodeler_core::solid;
@@ -78,11 +78,19 @@ pub fn run() -> Result<()> {
     let mut egui_renderer =
         egui_wgpu::Renderer::new(renderer.device(), format, egui_wgpu::RendererOptions::default());
 
+    // `surface` borrows the `Window` behind the `Arc` above, so we must NOT move that
+    // `Arc` into the event loop closure. Wrap it in an `Arc<Mutex<..>>` so the closure
+    // only moves its own owning handle and reaches the `Window` through a lock.
+    let window = Arc::new(Mutex::new(window));
+
     let mut dragging = false;
 
-    event_loop.run(move |event, elwt| match event {
+    event_loop.run(move |event, elwt| {
+        let window_guard = window.lock().unwrap();
+        let window_ref: &Window = window_guard.as_ref();
+        match event {
         Event::WindowEvent { event, .. } => {
-            if egui_state.on_window_event(&window, &event).consumed {
+            if egui_state.on_window_event(window_ref, &event).consumed {
                 return;
             }
             match event {
@@ -117,7 +125,7 @@ pub fn run() -> Result<()> {
                         .create_view(&wgpu::TextureViewDescriptor::default());
 
                     // egui overlay
-                    let raw = egui_state.take_egui_input(&window);
+                    let raw = egui_state.take_egui_input(window_ref);
                     let full = egui_ctx.run(raw, |ctx| {
                         egui::CentralPanel::default().show(ctx, |ui| {
                             ui.heading("TDModeler");
@@ -129,7 +137,7 @@ pub fn run() -> Result<()> {
                             ));
                         });
                     });
-                    egui_state.handle_platform_output(&window, full.platform_output);
+                    egui_state.handle_platform_output(window_ref, full.platform_output);
                     let tris = egui_ctx.tessellate(full.shapes, full.pixels_per_point);
 
                     let mut encoder = renderer
@@ -141,7 +149,7 @@ pub fn run() -> Result<()> {
 
                     let screen = egui_wgpu::ScreenDescriptor {
                         size_in_pixels: [config.width, config.height],
-                        pixels_per_point: egui_winit::pixels_per_point(&egui_ctx, &window),
+                        pixels_per_point: egui_winit::pixels_per_point(&egui_ctx, window_ref),
                     };
                     egui_renderer.update_buffers(
                         renderer.device(),
@@ -151,8 +159,8 @@ pub fn run() -> Result<()> {
                         &screen,
                     );
                     {
-                        let mut pass =
-                            encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
+                        let mut pass = encoder
+                            .begin_render_pass(&wgpu::RenderPassDescriptor {
                                 label: Some("egui-pass"),
                                 color_attachments: &[Some(wgpu::RenderPassColorAttachment {
                                     view: &view,
@@ -167,7 +175,8 @@ pub fn run() -> Result<()> {
                                 timestamp_writes: None,
                                 occlusion_query_set: None,
                                 multiview_mask: None,
-                            });
+                            })
+                            .forget_lifetime();
                         egui_renderer.render(&mut pass, &tris, &screen);
                     }
 
@@ -185,8 +194,10 @@ pub fn run() -> Result<()> {
                 camera.drag(delta.0 as f32, delta.1 as f32);
             }
         }
-        Event::AboutToWait => window.request_redraw(),
-        _ => {        }
+        Event::AboutToWait => window_ref.request_redraw(),
+        _ => {}
+        }
+    }
     });
     Ok(())
 }
