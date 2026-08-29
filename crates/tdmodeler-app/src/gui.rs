@@ -28,11 +28,13 @@ pub fn run() -> Result<()> {
 
     let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::new_without_display_handle());
     let surface = instance.create_surface(&*window)?;
-    let adapter = pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
+    let adapter = match pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
         compatible_surface: Some(&surface),
         ..Default::default()
-    }))
-    .ok_or_else(|| anyhow::anyhow!("no suitable GPU adapter found"))?;
+    })) {
+        Ok(a) => a,
+        Err(e) => return Err(anyhow::anyhow!("no suitable GPU adapter found: {e}")),
+    };
     let (device, queue) = pollster::block_on(adapter.request_device(&wgpu::DeviceDescriptor {
         required_features: wgpu::Features::empty(),
         required_limits: wgpu::Limits::default(),
