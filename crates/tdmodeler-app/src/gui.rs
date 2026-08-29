@@ -4,7 +4,7 @@
 //! Build/run on a desktop target with `--features gui`. This module is not
 //! compiled in headless/CI builds and requires a GPU + display libraries.
 
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 
 use anyhow::Result;
 use glam::Vec3;
@@ -78,16 +78,13 @@ pub fn run() -> Result<()> {
     let mut egui_renderer =
         egui_wgpu::Renderer::new(renderer.device(), format, egui_wgpu::RendererOptions::default());
 
-    // `surface` borrows the `Window` behind the `Arc` above, so we must NOT move that
-    // `Arc` into the event loop closure. Wrap it in an `Arc<Mutex<..>>` so the closure
-    // only moves its own owning handle and reaches the `Window` through a lock.
-    let window = Arc::new(Mutex::new(window));
-
+    // `surface` borrows `window` (via `create_surface(&*window)`), so we must not move
+    // `window` into the event-loop closure. `EventLoop::run` has no `'static` bound, so
+    // the closure can simply capture `window` (and the other locals) by reference.
     let mut dragging = false;
 
-    event_loop.run(move |event, elwt| {
-        let window_guard = window.lock().unwrap();
-        let window_ref: &Window = window_guard.as_ref();
+    event_loop.run(|event, elwt| {
+        let window_ref: &Window = &**window;
         match event {
         Event::WindowEvent { event, .. } => {
             if egui_state.on_window_event(window_ref, &event).consumed {
