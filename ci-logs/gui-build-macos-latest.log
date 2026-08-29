@@ -1,0 +1,496 @@
+[1m[33mwarning[0m: crates/tdmodeler-app/Cargo.toml: `default-features` is ignored for egui-winit, since `default-features` was not specified for `workspace.dependencies.egui-winit`, this could become a hard error in the future
+[1m[33mwarning[0m: `tdmodeler-app` (manifest) generated 1 warning
+[1m[92m    Updating[0m crates.io index
+[1m[92m     Locking[0m 374 packages to latest compatible versions
+[1m[92m      Adding[0m egui v0.34.3 [1m[33m(available: v0.36.1)[0m
+[1m[92m      Adding[0m egui-wgpu v0.34.3 [1m[33m(available: v0.36.1)[0m
+[1m[92m      Adding[0m egui-winit v0.34.3 [1m[33m(available: v0.36.1)[0m
+[1m[92m      Adding[0m glam v0.29.3 [1m[33m(available: v0.33.6)[0m
+[1m[92m      Adding[0m pollster v0.4.0 [1m[33m(available: v1.0.1)[0m
+[1m[92m      Adding[0m wgpu v29.0.4 [1m[33m(available: v30.0.1)[0m
+[1m[92m Downloading[0m crates ...
+[1m[92m  Downloaded[0m adler2 v2.0.1
+[1m[92m  Downloaded[0m heck v0.5.0
+[1m[92m  Downloaded[0m colorchoice v1.0.5
+[1m[92m  Downloaded[0m clap_lex v1.1.0
+[1m[92m  Downloaded[0m equivalent v1.0.2
+[1m[92m  Downloaded[0m form_urlencoded v1.2.2
+[1m[92m  Downloaded[0m accesskit v0.24.1
+[1m[92m  Downloaded[0m core-foundation v0.9.4
+[1m[92m  Downloaded[0m foldhash v0.1.5
+[1m[92m  Downloaded[0m anstyle-parse v1.0.0
+[1m[92m  Downloaded[0m core-graphics-types v0.1.3
+[1m[92m  Downloaded[0m cursor-icon v1.2.0
+[1m[92m  Downloaded[0m log v0.4.34
+[1m[92m  Downloaded[0m nohash-hasher v0.2.0
+[1m[92m  Downloaded[0m anstyle-query v1.1.5
+[1m[92m  Downloaded[0m anyhow v1.0.104
+[1m[92m  Downloaded[0m arboard v3.6.1
+[1m[92m  Downloaded[0m bytemuck v1.25.2
+[1m[92m  Downloaded[0m byteorder-lite v0.1.0
+[1m[92m  Downloaded[0m dispatch v0.2.0
+[1m[92m  Downloaded[0m foreign-types-shared v0.3.1
+[1m[92m  Downloaded[0m gpu-descriptor v0.3.2
+[1m[92m  Downloaded[0m gpu-descriptor-types v0.2.0
+[1m[92m  Downloaded[0m hexf-parse v0.2.1
+[1m[92m  Downloaded[0m idna_adapter v1.2.2
+[1m[92m  Downloaded[0m is_terminal_polyfill v1.70.2
+[1m[92m  Downloaded[0m khronos-egl v6.0.0
+[1m[92m  Downloaded[0m libloading v0.8.9
+[1m[92m  Downloaded[0m objc2-core-data v0.2.2
+[1m[92m  Downloaded[0m objc2-encode v4.1.0
+[1m[92m  Downloaded[0m objc2-io-surface v0.3.2
+[1m[92m  Downloaded[0m zerofrom-derive v0.1.7
+[1m[92m  Downloaded[0m yoke-derive v0.8.2
+[1m[92m  Downloaded[0m ahash v0.8.12
+[1m[92m  Downloaded[0m anstream v1.0.0
+[1m[92m  Downloaded[0m anstyle v1.0.14
+[1m[92m  Downloaded[0m autocfg v1.5.1
+[1m[92m  Downloaded[0m bit-vec v0.9.1
+[1m[92m  Downloaded[0m bitflags v1.3.2
+[1m[92m  Downloaded[0m block2 v0.6.2
+[1m[92m  Downloaded[0m cfg-if v1.0.4
+[1m[92m  Downloaded[0m cfg_aliases v0.2.2
+[1m[92m  Downloaded[0m clap_derive v4.6.4
+[1m[92m  Downloaded[0m core-foundation-sys v0.8.7
+[1m[92m  Downloaded[0m dashu-base v0.5.1
+[1m[92m  Downloaded[0m displaydoc v0.2.7
+[1m[92m  Downloaded[0m dlib v0.5.3
+[1m[92m  Downloaded[0m document-features v0.2.12
+[1m[92m  Downloaded[0m dpi v0.1.2
+[1m[92m  Downloaded[0m ecolor v0.34.3
+[1m[92m  Downloaded[0m fax v0.2.7
+[1m[92m  Downloaded[0m fdeflate v0.3.7
+[1m[92m  Downloaded[0m foldhash v0.2.0
+[1m[92m  Downloaded[0m font-types v0.11.3
+[1m[92m  Downloaded[0m foreign-types v0.5.0
+[1m[92m  Downloaded[0m foreign-types-macros v0.2.4
+[1m[92m  Downloaded[0m litrs v1.0.0
+[1m[92m  Downloaded[0m lock_api v0.4.14
+[1m[92m  Downloaded[0m zune-core v0.5.3
+[1m[92m  Downloaded[0m raw-window-metal v1.1.0
+[1m[92m  Downloaded[0m stable_deref_trait v1.2.1
+[1m[92m  Downloaded[0m wayland-sys v0.31.11
+[1m[92m  Downloaded[0m writeable v0.6.4
+[1m[92m  Downloaded[0m zerofrom v0.1.8
+[1m[92m  Downloaded[0m allocator-api2 v0.2.21
+[1m[92m  Downloaded[0m bit-set v0.9.1
+[1m[92m  Downloaded[0m block2 v0.5.1
+[1m[92m  Downloaded[0m bytemuck_derive v1.12.0
+[1m[92m  Downloaded[0m codespan-reporting v0.13.1
+[1m[92m  Downloaded[0m core-graphics v0.23.2
+[1m[92m  Downloaded[0m crc32fast v1.5.1
+[1m[92m  Downloaded[0m egui-wgpu v0.34.3
+[1m[92m  Downloaded[0m egui-winit v0.34.3
+[1m[92m  Downloaded[0m emath v0.34.3
+[1m[92m  Downloaded[0m gpu-allocator v0.28.0
+[1m[92m  Downloaded[0m icu_provider v2.3.1
+[1m[92m  Downloaded[0m linebender_resource_handle v0.1.1
+[1m[92m  Downloaded[0m litemap v0.8.3
+[1m[92m  Downloaded[0m objc-sys v0.3.5
+[1m[92m  Downloaded[0m yoke v0.8.3
+[1m[92m  Downloaded[0m arrayvec v0.7.8
+[1m[92m  Downloaded[0m color v0.3.3
+[1m[92m  Downloaded[0m getrandom v0.3.4
+[1m[92m  Downloaded[0m half v2.7.1
+[1m[92m  Downloaded[0m icu_locale_core v2.3.0
+[1m[92m  Downloaded[0m icu_normalizer_data v2.3.0
+[1m[92m  Downloaded[0m profiling v1.0.18
+[1m[92m  Downloaded[0m quick-error v2.0.1
+[1m[92m  Downloaded[0m rustc-hash v2.1.3
+[1m[92m  Downloaded[0m smol_str v0.2.2
+[1m[92m  Downloaded[0m strsim v0.11.1
+[1m[92m  Downloaded[0m type-map v0.5.1
+[1m[92m  Downloaded[0m utf8parse v0.2.2
+[1m[92m  Downloaded[0m version_check v0.9.5
+[1m[92m  Downloaded[0m wgpu-core-deps-apple v29.0.4
+[1m[92m  Downloaded[0m wgpu-naga-bridge v29.0.4
+[1m[92m  Downloaded[0m clap v4.6.6
+[1m[92m  Downloaded[0m dashu-ratio v0.5.1
+[1m[92m  Downloaded[0m dispatch2 v0.3.1
+[1m[92m  Downloaded[0m euclid v0.22.14
+[1m[92m  Downloaded[0m flate2 v1.1.10
+[1m[92m  Downloaded[0m indexmap v2.14.1
+[1m[92m  Downloaded[0m bitflags v2.13.1
+[1m[92m  Downloaded[0m icu_properties v2.3.0
+[1m[92m  Downloaded[0m percent-encoding v2.3.2
+[1m[92m  Downloaded[0m wgpu-types v29.0.4
+[1m[92m  Downloaded[0m zerocopy-derive v0.8.56
+[1m[92m  Downloaded[0m epaint v0.34.3
+[1m[92m  Downloaded[0m icu_collections v2.3.0
+[1m[92m  Downloaded[0m pollster v0.4.0
+[1m[92m  Downloaded[0m potential_utf v0.1.6
+[1m[92m  Downloaded[0m renderdoc-sys v1.1.0
+[1m[92m  Downloaded[0m rustc-hash v1.1.0
+[1m[92m  Downloaded[0m scopeguard v1.2.0
+[1m[92m  Downloaded[0m clipper2-rust v1.1.0
+[1m[92m  Downloaded[0m fearless_simd v0.3.0
+[1m[92m  Downloaded[0m hashbrown v0.15.5
+[1m[92m  Downloaded[0m hashbrown v0.16.1
+[1m[92m  Downloaded[0m idna v1.1.0
+[1m[92m  Downloaded[0m num-modular v0.6.5
+[1m[92m  Downloaded[0m clap_builder v4.6.6
+[1m[92m  Downloaded[0m glow v0.17.0
+[1m[92m  Downloaded[0m hashbrown v0.17.1
+[1m[92m  Downloaded[0m kurbo v0.13.1
+[1m[92m  Downloaded[0m libm v0.2.16
+[1m[92m  Downloaded[0m dashu-int v0.5.1
+[1m[92m  Downloaded[0m icu_properties_data v2.3.0
+[1m[92m  Downloaded[0m objc2-core-image v0.2.2
+[1m[92m  Downloaded[0m objc2-quartz-core v0.3.2
+[1m[92m  Downloaded[0m pin-project-lite v0.2.17
+[1m[92m  Downloaded[0m pkg-config v0.3.34
+[1m[92m  Downloaded[0m presser v0.3.1
+[1m[92m  Downloaded[0m raw-window-handle v0.6.2
+[1m[92m  Downloaded[0m self_cell v1.3.0
+[1m[92m  Downloaded[0m simd-adler32 v0.3.10
+[1m[92m  Downloaded[0m static_assertions v1.1.0
+[1m[92m  Downloaded[0m synstructure v0.13.2
+[1m[92m  Downloaded[0m termcolor v1.4.1
+[1m[92m  Downloaded[0m thiserror-impl v2.0.20
+[1m[92m  Downloaded[0m tinystr v0.8.4
+[1m[92m  Downloaded[0m utf8_iter v1.0.4
+[1m[92m  Downloaded[0m web-time v1.1.0
+[1m[92m  Downloaded[0m zerovec-derive v0.11.6
+[1m[92m  Downloaded[0m num-traits v0.2.19
+[1m[92m  Downloaded[0m once_cell v1.21.4
+[1m[92m  Downloaded[0m peniko v0.6.1
+[1m[92m  Downloaded[0m polycool v0.4.0
+[1m[92m  Downloaded[0m quote v1.0.47
+[1m[92m  Downloaded[0m rustversion v1.0.23
+[1m[92m  Downloaded[0m objc2-quartz-core v0.2.2
+[1m[92m  Downloaded[0m smallvec v1.15.2
+[1m[92m  Downloaded[0m zerocopy v0.8.56
+[1m[92m  Downloaded[0m image v0.25.10
+[1m[92m  Downloaded[0m parking_lot v0.12.5
+[1m[92m  Downloaded[0m parking_lot_core v0.9.12
+[1m[92m  Downloaded[0m spirv v0.4.0+sdk-1.4.341.0
+[1m[92m  Downloaded[0m weezl v0.1.12
+[1m[92m  Downloaded[0m zerotrie v0.2.5
+[1m[92m  Downloaded[0m miniz_oxide v0.9.1
+[1m[92m  Downloaded[0m objc2-metal v0.2.2
+[1m[92m  Downloaded[0m ordered-float v5.5.0
+[1m[92m  Downloaded[0m serde_core v1.0.229
+[1m[92m  Downloaded[0m thiserror v2.0.20
+[1m[92m  Downloaded[0m tracing-core v0.1.36
+[1m[92m  Downloaded[0m unicode-ident v1.0.24
+[1m[92m  Downloaded[0m uuid v1.26.0
+[1m[92m  Downloaded[0m webbrowser v1.2.4
+[1m[92m  Downloaded[0m objc2-core-graphics v0.3.2
+[1m[92m  Downloaded[0m proc-macro2 v1.0.107
+[1m[92m  Downloaded[0m serde v1.0.229
+[1m[92m  Downloaded[0m serde_derive v1.0.229
+[1m[92m  Downloaded[0m ash v0.38.0+1.3.281
+[1m[92m  Downloaded[0m zune-jpeg v0.5.15
+[1m[92m  Downloaded[0m egui v0.34.3
+[1m[92m  Downloaded[0m icu_normalizer v2.3.0
+[1m[92m  Downloaded[0m glam v0.29.3
+[1m[92m  Downloaded[0m tiff v0.11.3
+[1m[92m  Downloaded[0m unicode-segmentation v1.13.3
+[1m[92m  Downloaded[0m url v2.5.8
+[1m[92m  Downloaded[0m vello_cpu v0.0.6
+[1m[92m  Downloaded[0m winit v0.30.13
+[1m[92m  Downloaded[0m miniz_oxide v0.8.9
+[1m[92m  Downloaded[0m vello_common v0.0.6
+[1m[92m  Downloaded[0m png v0.18.1
+[1m[92m  Downloaded[0m zerovec v0.11.8
+[1m[92m  Downloaded[0m moxcms v0.8.1
+[1m[92m  Downloaded[0m objc2-core-foundation v0.3.2
+[1m[92m  Downloaded[0m epaint_default_fonts v0.34.3
+[1m[92m  Downloaded[0m zlib-rs v0.6.7
+[1m[92m  Downloaded[0m objc2 v0.5.2
+[1m[92m  Downloaded[0m objc2-metal v0.3.2
+[1m[92m  Downloaded[0m wgpu v29.0.4
+[1m[92m  Downloaded[0m objc2-foundation v0.2.2
+[1m[92m  Downloaded[0m objc2 v0.6.4
+[1m[92m  Downloaded[0m unicode-width v0.2.2
+[1m[92m  Downloaded[0m libc v0.2.189
+[1m[92m  Downloaded[0m skrifa v0.40.0
+[1m[92m  Downloaded[0m syn v2.0.119
+[1m[92m  Downloaded[0m syn v3.0.4
+[1m[92m  Downloaded[0m objc2-foundation v0.3.2
+[1m[92m  Downloaded[0m objc2-app-kit v0.2.2
+[1m[92m  Downloaded[0m wgpu-core v29.0.4
+[1m[92m  Downloaded[0m wgpu-hal v29.0.4
+[1m[92m  Downloaded[0m read-fonts v0.37.0
+[1m[92m  Downloaded[0m tracing v0.1.44
+[1m[92m  Downloaded[0m objc2-app-kit v0.3.2
+[1m[92m  Downloaded[0m manifold-rust v0.13.1
+[1m[92m  Downloaded[0m naga v29.0.4
+[1m[92m  Downloaded[0m pxfm v0.1.30
+[1m[92m   Compiling[0m proc-macro2 v1.0.107
+[1m[92m   Compiling[0m unicode-ident v1.0.24
+[1m[92m   Compiling[0m quote v1.0.47
+[1m[92m   Compiling[0m cfg-if v1.0.4
+[1m[92m   Compiling[0m objc2-encode v4.1.0
+[1m[92m   Compiling[0m bitflags v2.13.1
+[1m[92m   Compiling[0m autocfg v1.5.1
+[1m[92m   Compiling[0m libm v0.2.16
+[1m[92m   Compiling[0m num-traits v0.2.19
+[1m[92m   Compiling[0m smallvec v1.15.2
+[1m[92m   Compiling[0m cfg_aliases v0.2.2
+[1m[92m   Compiling[0m objc2 v0.6.4
+[1m[92m   Compiling[0m zerocopy v0.8.56
+[1m[92m   Compiling[0m syn v3.0.4
+[1m[92m   Compiling[0m syn v2.0.119
+[1m[92m   Compiling[0m libc v0.2.189
+[1m[92m   Compiling[0m arrayvec v0.7.8
+[1m[92m   Compiling[0m synstructure v0.13.2
+[1m[92m   Compiling[0m objc2-core-foundation v0.3.2
+[1m[92m   Compiling[0m bytemuck_derive v1.12.0
+[1m[92m   Compiling[0m zerocopy-derive v0.8.56
+[1m[92m   Compiling[0m zerofrom-derive v0.1.7
+[1m[92m   Compiling[0m bytemuck v1.25.2
+[1m[92m   Compiling[0m yoke-derive v0.8.2
+[1m[92m   Compiling[0m zerofrom v0.1.8
+[1m[92m   Compiling[0m stable_deref_trait v1.2.1
+[1m[92m   Compiling[0m log v0.4.34
+[1m[92m   Compiling[0m foldhash v0.2.0
+[1m[92m   Compiling[0m hashbrown v0.16.1
+[1m[92m   Compiling[0m yoke v0.8.3
+[1m[92m   Compiling[0m objc2-foundation v0.3.2
+[1m[92m   Compiling[0m zerovec-derive v0.11.6
+[1m[92m   Compiling[0m thiserror v2.0.20
+[1m[92m   Compiling[0m zerovec v0.11.8
+[1m[92m   Compiling[0m thiserror-impl v2.0.20
+[1m[92m   Compiling[0m half v2.7.1
+[1m[92m   Compiling[0m displaydoc v0.2.7
+[1m[92m   Compiling[0m parking_lot_core v0.9.12
+[1m[92m   Compiling[0m once_cell v1.21.4
+[1m[92m   Compiling[0m scopeguard v1.2.0
+[1m[92m   Compiling[0m lock_api v0.4.14
+[1m[92m   Compiling[0m raw-window-handle v0.6.2
+[1m[92m   Compiling[0m parking_lot v0.12.5
+[1m[92m   Compiling[0m tinystr v0.8.4
+[1m[92m   Compiling[0m block2 v0.6.2
+[1m[92m   Compiling[0m naga v29.0.4
+[1m[92m   Compiling[0m hashbrown v0.17.1
+[1m[92m   Compiling[0m writeable v0.6.4
+[1m[92m   Compiling[0m litemap v0.8.3
+[1m[92m   Compiling[0m bit-vec v0.9.1
+[1m[92m   Compiling[0m profiling v1.0.18
+[1m[92m   Compiling[0m equivalent v1.0.2
+[1m[92m   Compiling[0m unicode-width v0.2.2
+[1m[92m   Compiling[0m indexmap v2.14.1
+[1m[92m   Compiling[0m bit-set v0.9.1
+[1m[92m   Compiling[0m codespan-reporting v0.13.1
+[1m[92m   Compiling[0m icu_locale_core v2.3.0
+[1m[92m   Compiling[0m objc2-metal v0.3.2
+[1m[92m   Compiling[0m zerotrie v0.2.5
+[1m[92m   Compiling[0m potential_utf v0.1.6
+[1m[92m   Compiling[0m polycool v0.4.0
+[1m[92m   Compiling[0m hexf-parse v0.2.1
+[1m[92m   Compiling[0m icu_properties_data v2.3.0
+[1m[92m   Compiling[0m icu_normalizer_data v2.3.0
+[1m[92m   Compiling[0m utf8_iter v1.0.4
+[1m[92m   Compiling[0m objc-sys v0.3.5
+[1m[92m   Compiling[0m rustc-hash v1.1.0
+[1m[92m   Compiling[0m icu_collections v2.3.0
+[1m[92m   Compiling[0m kurbo v0.13.1
+[1m[92m   Compiling[0m objc2-quartz-core v0.3.2
+[1m[92m   Compiling[0m icu_provider v2.3.1
+[1m[92m   Compiling[0m wgpu-types v29.0.4
+[1m[92m   Compiling[0m color v0.3.3
+[1m[92m   Compiling[0m wgpu-hal v29.0.4
+[1m[92m   Compiling[0m static_assertions v1.1.0
+[1m[92m   Compiling[0m crc32fast v1.5.1
+[1m[92m   Compiling[0m linebender_resource_handle v0.1.1
+[1m[92m   Compiling[0m version_check v0.9.5
+[1m[92m   Compiling[0m ahash v0.8.12
+[1m[92m   Compiling[0m peniko v0.6.1
+[1m[92m   Compiling[0m raw-window-metal v1.1.0
+[1m[92m   Compiling[0m font-types v0.11.3
+[1m[92m   Compiling[0m fearless_simd v0.3.0
+[1m[92m   Compiling[0m rustversion v1.0.23
+[1m[92m   Compiling[0m simd-adler32 v0.3.10
+[1m[92m   Compiling[0m adler2 v2.0.1
+[1m[92m   Compiling[0m miniz_oxide v0.9.1
+[1m[92m   Compiling[0m wgpu-naga-bridge v29.0.4
+[1m[92m   Compiling[0m vello_common v0.0.6
+[1m[92m   Compiling[0m read-fonts v0.37.0
+[1m[92m   Compiling[0m objc2 v0.5.2
+[1m[92m   Compiling[0m icu_normalizer v2.3.0
+[1m[92m   Compiling[0m icu_properties v2.3.0
+[1m[92m   Compiling[0m emath v0.34.3
+[1m[92m   Compiling[0m wgpu-core v29.0.4
+[1m[92m   Compiling[0m dashu-int v0.5.1
+[1m[92m   Compiling[0m litrs v1.0.0
+[1m[92m   Compiling[0m core-foundation-sys v0.8.7
+[1m[92m   Compiling[0m zune-core v0.5.3
+[1m[92m   Compiling[0m zune-jpeg v0.5.15
+[1m[92m   Compiling[0m document-features v0.2.12
+[1m[92m   Compiling[0m skrifa v0.40.0
+[1m[92m   Compiling[0m core-foundation v0.9.4
+[1m[92m   Compiling[0m ecolor v0.34.3
+[1m[92m   Compiling[0m flate2 v1.1.10
+[1m[92m   Compiling[0m idna_adapter v1.2.2
+[1m[92m   Compiling[0m block2 v0.5.1
+[1m[92m   Compiling[0m wgpu-core-deps-apple v29.0.4
+[1m[92m   Compiling[0m vello_cpu v0.0.6
+[1m[92m   Compiling[0m objc2-core-graphics v0.3.2
+[1m[92m   Compiling[0m foreign-types-macros v0.2.4
+[1m[92m   Compiling[0m wgpu v29.0.4
+[1m[92m   Compiling[0m nohash-hasher v0.2.0
+[1m[92m   Compiling[0m pxfm v0.1.30
+[1m[92m   Compiling[0m rustc-hash v2.1.3
+[1m[92m   Compiling[0m foreign-types-shared v0.3.1
+[1m[92m   Compiling[0m num-modular v0.6.5
+[1m[92m   Compiling[0m dashu-base v0.5.1
+[1m[92m   Compiling[0m fax v0.2.7
+[1m[92m   Compiling[0m self_cell v1.3.0
+[1m[92m   Compiling[0m dispatch v0.2.0
+[1m[92m   Compiling[0m percent-encoding v2.3.2
+[1m[92m   Compiling[0m epaint_default_fonts v0.34.3
+[1m[92m   Compiling[0m utf8parse v0.2.2
+[1m[92m   Compiling[0m quick-error v2.0.1
+[1m[92m   Compiling[0m weezl v0.1.12
+[1m[92m   Compiling[0m bitflags v1.3.2
+[1m[92m   Compiling[0m core-graphics-types v0.1.3
+[1m[92m   Compiling[0m tiff v0.11.3
+[1m[92m   Compiling[0m anstyle-parse v1.0.0
+[1m[92m   Compiling[0m moxcms v0.8.1
+[1m[92m   Compiling[0m epaint v0.34.3
+[1m[92m   Compiling[0m form_urlencoded v1.2.2
+[1m[92m   Compiling[0m objc2-foundation v0.2.2
+[1m[92m   Compiling[0m foreign-types v0.5.0
+[1m[92m   Compiling[0m objc2-app-kit v0.3.2
+[1m[92m   Compiling[0m idna v1.1.0
+[1m[92m   Compiling[0m tdmodeler-mesh v0.1.0 (/Users/runner/work/3dwon/3dwon/crates/tdmodeler-mesh)
+[1m[92m   Compiling[0m winit v0.30.13
+[1m[92m   Compiling[0m uuid v1.26.0
+[1m[92m   Compiling[0m anstyle v1.0.14
+[1m[92m   Compiling[0m colorchoice v1.0.5
+[1m[92m   Compiling[0m tracing-core v0.1.36
+[1m[92m   Compiling[0m is_terminal_polyfill v1.70.2
+[1m[92m   Compiling[0m anstyle-query v1.1.5
+[1m[92m   Compiling[0m pin-project-lite v0.2.17
+[1m[92m   Compiling[0m byteorder-lite v0.1.0
+[1m[92m   Compiling[0m image v0.25.10
+[1m[92m   Compiling[0m tracing v0.1.44
+[1m[92m   Compiling[0m anstream v1.0.0
+[1m[92m   Compiling[0m accesskit v0.24.1
+[1m[92m   Compiling[0m url v2.5.8
+[1m[92m   Compiling[0m core-graphics v0.23.2
+[1m[92m   Compiling[0m objc2-app-kit v0.2.2
+[1m[92m   Compiling[0m dashu-ratio v0.5.1
+[1m[92m   Compiling[0m clipper2-rust v1.1.0
+[1m[92m   Compiling[0m smol_str v0.2.2
+[1m[92m   Compiling[0m anyhow v1.0.104
+[1m[92m   Compiling[0m cursor-icon v1.2.0
+[1m[92m   Compiling[0m clap_lex v1.1.0
+[1m[92m   Compiling[0m dpi v0.1.2
+[1m[92m   Compiling[0m heck v0.5.0
+[1m[92m   Compiling[0m strsim v0.11.1
+[1m[92m   Compiling[0m web-time v1.1.0
+[1m[92m   Compiling[0m unicode-segmentation v1.13.3
+[1m[92m   Compiling[0m clap_builder v4.6.6
+[1m[92m   Compiling[0m clap_derive v4.6.4
+[1m[92m   Compiling[0m egui v0.34.3
+[1m[92m   Compiling[0m manifold-rust v0.13.1
+[1m[92m   Compiling[0m arboard v3.6.1
+[1m[92m   Compiling[0m webbrowser v1.2.4
+[1m[92m   Compiling[0m type-map v0.5.1
+[1m[92m   Compiling[0m glam v0.29.3
+[1m[92m   Compiling[0m tdmodeler-render v0.1.0 (/Users/runner/work/3dwon/3dwon/crates/tdmodeler-render)
+[1m[92m   Compiling[0m tdmodeler-core v0.1.0 (/Users/runner/work/3dwon/3dwon/crates/tdmodeler-core)
+[1m[33mwarning[0m[1m: variable does not need to be mutable[0m
+   [1m[94m--> [0mcrates/tdmodeler-core/src/sketch.rs:108:13
+    [1m[94m|[0m
+[1m[94m108[0m [1m[94m|[0m         let mut t = (r / half.tan()).min(la * 0.5).min(lb * 0.5);
+    [1m[94m|[0m             [1m[94m----[0m[1m[33m^[0m
+    [1m[94m|[0m             [1m[94m|[0m
+    [1m[94m|[0m             [1m[94mhelp: remove this `mut`[0m
+    [1m[94m|[0m
+    [1m[94m= [0m[1mnote[0m: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+[1m[33mwarning[0m: `tdmodeler-core` (lib) generated 1 warning (run `cargo fix --lib -p tdmodeler-core` to apply 1 suggestion)
+[1m[92m   Compiling[0m egui-wgpu v0.34.3
+[1m[92m   Compiling[0m egui-winit v0.34.3
+[1m[92m   Compiling[0m clap v4.6.6
+[1m[92m   Compiling[0m tdmodeler-io v0.1.0 (/Users/runner/work/3dwon/3dwon/crates/tdmodeler-io)
+[1m[92m   Compiling[0m pollster v0.4.0
+[1m[92m   Compiling[0m tdmodeler-app v0.1.0 (/Users/runner/work/3dwon/3dwon/crates/tdmodeler-app)
+[1m[91merror[E0432][0m[1m: unresolved import `winit::window::WindowBuilder`[0m
+  [1m[94m--> [0mcrates/tdmodeler-app/src/gui.rs:13:5
+   [1m[94m|[0m
+[1m[94m13[0m [1m[94m|[0m use winit::window::WindowBuilder;
+   [1m[94m|[0m     [1m[91m^^^^^^^^^^^^^^^[0m[1m[94m-------------[0m
+   [1m[94m|[0m                    [1m[94m|[0m
+   [1m[94m|[0m                    [1m[94mno `WindowBuilder` in `window`[0m
+
+[1m[33mwarning[0m[1m: unused import: `ControlFlow`[0m
+  [1m[94m--> [0mcrates/tdmodeler-app/src/gui.rs:12:25
+   [1m[94m|[0m
+[1m[94m12[0m [1m[94m|[0m use winit::event_loop::{ControlFlow, EventLoop};
+   [1m[94m|[0m                         [1m[33m^^^^^^^^^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+[1m[91merror[E0599][0m[1m: no associated function or constant named `default` found for struct `wgpu::InstanceDescriptor` in the current scope[0m
+  [1m[94m--> [0mcrates/tdmodeler-app/src/gui.rs:29:66
+   [1m[94m|[0m
+[1m[94m29[0m [1m[94m|[0m     let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::default());
+   [1m[94m|[0m                                                                  [1m[91m^^^^^^^[0m [1m[91massociated function or constant not found in `wgpu::InstanceDescriptor`[0m
+   [1m[94m|[0m
+[1m[92mnote[0m: if you're trying to build a new `wgpu::InstanceDescriptor` consider using one of the following associated functions:
+      wgpu::InstanceDescriptor::new_without_display_handle
+      wgpu::InstanceDescriptor::new_with_display_handle
+      wgpu::InstanceDescriptor::new_without_display_handle_from_env
+      wgpu::InstanceDescriptor::new_with_display_handle_from_env
+  [1m[94m--> [0m/Users/runner/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/wgpu-types-29.0.4/src/instance.rs:67:5
+   [1m[94m|[0m
+[1m[94m67[0m [1m[94m|[0m       pub fn new_without_display_handle() -> Self {
+   [1m[94m|[0m       [1m[92m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m...[0m
+[1m[94m79[0m [1m[94m|[0m       pub fn new_with_display_handle(display: alloc::boxed::Box<dyn WgpuHasDisplayHandle>) -> Self {
+   [1m[94m|[0m       [1m[92m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m...[0m
+[1m[94m87[0m [1m[94m|[0m       pub fn new_without_display_handle_from_env() -> Self {
+   [1m[94m|[0m       [1m[92m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1m[94m...[0m
+[1m[94m95[0m [1m[94m|[0m [1m[92m/[0m     pub fn new_with_display_handle_from_env(
+[1m[94m96[0m [1m[94m|[0m [1m[92m|[0m         display: alloc::boxed::Box<dyn WgpuHasDisplayHandle>,
+[1m[94m97[0m [1m[94m|[0m [1m[92m|[0m     ) -> Self {
+   [1m[94m|[0m [1m[92m|_____________^[0m
+
+[1m[91merror[E0599][0m[1m: no method named `ok_or_else` found for enum `std::result::Result<T, E>` in the current scope[0m
+  [1m[94m--> [0mcrates/tdmodeler-app/src/gui.rs:35:6
+   [1m[94m|[0m
+[1m[94m31[0m [1m[94m|[0m       let adapter = pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
+   [1m[94m|[0m [1m[94m ___________________-[0m
+[1m[94m32[0m [1m[94m|[0m [1m[94m|[0m         compatible_surface: Some(&surface),
+[1m[94m33[0m [1m[94m|[0m [1m[94m|[0m         ..Default::default()
+[1m[94m34[0m [1m[94m|[0m [1m[94m|[0m     }))
+[1m[94m35[0m [1m[94m|[0m [1m[94m|[0m     .ok_or_else(|| anyhow::anyhow!("no suitable GPU adapter found"))?;
+   [1m[94m|[0m [1m[94m|_____-[0m[1m[91m^^^^^^^^^^[0m
+   [1m[94m|[0m
+[1m[96mhelp[0m: there is a method `or_else` with a similar name
+   [1m[94m|[0m
+[1m[94m35[0m [91m- [0m    .[91mok_or_else[0m(|| anyhow::anyhow!("no suitable GPU adapter found"))?;
+[1m[94m35[0m [92m+ [0m    .[92mor_else[0m(|| anyhow::anyhow!("no suitable GPU adapter found"))?;
+   [1m[94m|[0m
+
+[1m[33mwarning[0m[1m: use of deprecated method `winit::event_loop::EventLoop::<T>::run`: use `EventLoop::run_app` instead[0m
+  [1m[94m--> [0mcrates/tdmodeler-app/src/gui.rs:81:16
+   [1m[94m|[0m
+[1m[94m81[0m [1m[94m|[0m     event_loop.run(move |event, elwt| match event {
+   [1m[94m|[0m                [1m[33m^^^[0m
+   [1m[94m|[0m
+   [1m[94m= [0m[1mnote[0m: `#[warn(deprecated)]` on by default
+
+[1m[33mwarning[0m[1m: use of deprecated method `egui::Context::run`: Call run_ui instead[0m
+   [1m[94m--> [0mcrates/tdmodeler-app/src/gui.rs:119:41
+    [1m[94m|[0m
+[1m[94m119[0m [1m[94m|[0m                     let full = egui_ctx.run(raw, |ctx| {
+    [1m[94m|[0m                                         [1m[33m^^^[0m
+
+[1m[33mwarning[0m[1m: use of deprecated method `egui::CentralPanel::show`: Use show_inside() instead[0m
+   [1m[94m--> [0mcrates/tdmodeler-app/src/gui.rs:120:55
+    [1m[94m|[0m
+[1m[94m120[0m [1m[94m|[0m                         egui::CentralPanel::default().show(ctx, |ui| {
+    [1m[94m|[0m                                                       [1m[33m^^^^[0m
+
+[1mSome errors have detailed explanations: E0432, E0599.[0m
+[1mFor more information about an error, try `rustc --explain E0432`.[0m
+[1m[33mwarning[0m: `tdmodeler-app` (bin "tdmodeler") generated 4 warnings
+[1m[91merror[0m: could not compile `tdmodeler-app` (bin "tdmodeler") due to 3 previous errors; 4 warnings emitted
