@@ -59,19 +59,21 @@ jobs:
           set -o pipefail
           cargo build -p tdmodeler-app --features gui 2>&1 | tee gui-build.log
 
-      # On failure, push the raw build log to the public `ci-logs` branch
+      # Always publish the raw build log to a public per-OS branch
       # (via the workflow's own GITHUB_TOKEN, granted contents:write above).
       # It is then retrievable with `git fetch` (git protocol, not subject to
       # the GitHub REST rate limit) and inspected without manual copy/paste.
-      - name: Publish build log on failure
-        if: failure()
+      - name: Publish build log
+        if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "ci-bot"
           git config user.email "ci@github.com"
           mkdir -p ci-logs
-          cp gui-build.log "ci-logs/gui-build-${{ matrix.os }}.log"
+          echo "OUTCOME=${{ job.status }}" > "ci-logs/gui-build-${{ matrix.os }}.log"
+          echo "COMMIT=${{ github.sha }}" >> "ci-logs/gui-build-${{ matrix.os }}.log"
+          cat gui-build.log >> "ci-logs/gui-build-${{ matrix.os }}.log"
           git add ci-logs
           git commit -m "ci: gui build log (${{ matrix.os }})" || true
           git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/124476115/3dwon.git HEAD:ci-logs-${{ matrix.os }} || true
