@@ -4,8 +4,6 @@
 //! Build/run on a desktop target with `--features gui`. This module is not
 //! compiled in headless/CI builds and requires a GPU + display libraries.
 
-use std::sync::Arc;
-
 use anyhow::Result;
 use glam::Vec3;
 use winit::event::{DeviceEvent, ElementState, Event, MouseButton, WindowEvent};
@@ -20,14 +18,12 @@ use tdmodeler_render::renderer::Renderer;
 
 pub fn run() -> Result<()> {
     let event_loop = EventLoop::builder().build()?;
-    let window = Arc::new(
-        event_loop
-            .create_window(WindowAttributes::default().with_title("TDModeler"))
-            .map_err(|e| anyhow::anyhow!(e.to_string()))?,
-    );
+    let window = event_loop
+        .create_window(WindowAttributes::default().with_title("TDModeler"))
+        .map_err(|e| anyhow::anyhow!(e.to_string()))?;
 
     let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::new_without_display_handle());
-    let surface = instance.create_surface(&*window)?;
+    let surface = instance.create_surface(&window)?;
     let adapter = match pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
         compatible_surface: Some(&surface),
         ..Default::default()
@@ -84,7 +80,7 @@ pub fn run() -> Result<()> {
     let mut dragging = false;
 
     event_loop.run(|event, elwt| {
-        let window_ref: &Window = &**window;
+        let window_ref: &Window = window;
         match event {
         Event::WindowEvent { event, .. } => {
             if egui_state.on_window_event(window_ref, &event).consumed {
