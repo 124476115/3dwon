@@ -1,0 +1,11 @@
+[package]
+name = "tdmodeler-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Modeling kernel: solids, sketches, features, booleans, document model"
+
+[dependencies]
+manifold-rust = "0.13"
+tdmodeler-mesh = { path = "../tdmodeler-mesh" }
+thiserror.workspace = true

@@ -1,0 +1,36 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/tdmodeler-mesh",
+    "crates/tdmodeler-core",
+    "crates/tdmodeler-io",
+    "crates/tdmodeler-render",
+    "crates/tdmodeler-app",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["TDModeler contributors"]
+
+[workspace.dependencies]
+thiserror = "2"
+manifold-rust = "0.13"
+tdmodeler-mesh = { path = "crates/tdmodeler-mesh" }
+tdmodeler-core = { path = "crates/tdmodeler-core" }
+tdmodeler-io = { path = "crates/tdmodeler-io" }
+tdmodeler-render = { path = "crates/tdmodeler-render" }
+zip = "2"
+wgpu = "29"
+winit = { version = "0.30", default-features = false }
+egui = "0.34"
+egui-wgpu = "0.34"
+egui-winit = "0.34"
+glam = "0.29"
+bytemuck = "1"
+pollster = "0.4"
+
+[profile.release]
+opt-level = 3
+lto = "thin"

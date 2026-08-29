@@ -1,0 +1,50 @@
+[package]
+name = "tdmodeler-app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "tdmodeler"
+path = "src/main.rs"
+
+[dependencies]
+tdmodeler-core = { workspace = true }
+tdmodeler-mesh = { workspace = true }
+tdmodeler-io = { workspace = true }
+tdmodeler-render = { workspace = true }
+glam = { workspace = true, optional = true }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+
+# GUI stack (desktop only) — optional so the CLI builds headless.
+[dependencies.wgpu]
+workspace = true
+optional = true
+
+[dependencies.winit]
+workspace = true
+optional = true
+default-features = false
+features = ["wayland", "rwh_06"]
+
+[dependencies.egui]
+workspace = true
+optional = true
+
+[dependencies.egui-wgpu]
+workspace = true
+optional = true
+
+[dependencies.egui-winit]
+workspace = true
+optional = true
+default-features = false
+
+[dependencies.pollster]
+workspace = true
+optional = true
+
+[features]
+default = []
+gui = ["dep:wgpu", "dep:winit", "dep:egui", "dep:egui-wgpu", "dep:egui-winit", "dep:pollster", "dep:glam", "tdmodeler-render/gui"]

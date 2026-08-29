@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  # Headless kernel / IO / CLI tests — run everywhere, no GPU needed.
+  test:
+    name: Test (default features)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build
+        run: cargo build --workspace
+      - name: Test
+        run: cargo test --workspace
+
+  # GUI build — validates the wgpu / winit / egui viewer compiles & links
+  # against the real crates.io toolchain + system display libraries.
+  gui:
+    name: Build GUI (--features gui)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install Linux system libraries
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            pkg-config \
+            libx11-dev libxkbcommon-dev libwayland-dev \
+            libxrandr-dev libxinerama-dev libxcursor-dev libxcomposite-dev \
+            libegl1-mesa-dev libgl1-mesa-dev libvulkan-dev
+
+      - name: Build viewer (compile + link only)
+        run: cargo build -p tdmodeler-app --features gui

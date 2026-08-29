@@ -1,0 +1,10 @@
+# Rust / target artifacts
+/target
+Cargo.lock
+
+# local build output
+/out
+
+# editor / OS noise
+.DS_Store
+*.swp

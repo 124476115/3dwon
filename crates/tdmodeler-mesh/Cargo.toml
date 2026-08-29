@@ -1,0 +1,9 @@
+[package]
+name = "tdmodeler-mesh"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Triangle mesh data structure and geometry utilities (no GPU deps)"
+
+[dependencies]
+thiserror.workspace = true

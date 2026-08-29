@@ -1,0 +1,19 @@
+[package]
+name = "tdmodeler-io"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Import/export filters: STL (binary + ASCII), OBJ, 3MF"
+
+[dependencies]
+tdmodeler-mesh = { path = "../tdmodeler-mesh" }
+thiserror.workspace = true
+
+[dependencies.tdmodeler-core]
+path = "../tdmodeler-core"
+optional = true
+
+[features]
+default = []
+# Enables the kernel bridge (STL/OBJ -> Solid) and 3MF import.
+manifold = ["dep:tdmodeler-core"]
