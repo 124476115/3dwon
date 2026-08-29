@@ -80,7 +80,7 @@ pub fn run() -> Result<()> {
     let mut dragging = false;
 
     event_loop.run(|event, elwt| {
-        let window_ref: &Window = window;
+        let window_ref: &Window = &window;
         match event {
         Event::WindowEvent { event, .. } => {
             if egui_state.on_window_event(window_ref, &event).consumed {
