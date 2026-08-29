@@ -10,7 +10,7 @@ use anyhow::Result;
 use glam::Vec3;
 use winit::event::{DeviceEvent, ElementState, Event, MouseButton, WindowEvent};
 use winit::event_loop::{ControlFlow, EventLoop};
-use winit::window::WindowBuilder;
+use winit::window::WindowAttributes;
 
 use tdmodeler_core::features;
 use tdmodeler_core::solid;
@@ -21,12 +21,12 @@ use tdmodeler_render::renderer::Renderer;
 pub fn run() -> Result<()> {
     let event_loop = EventLoop::builder().build()?;
     let window = Arc::new(
-        WindowBuilder::new()
-            .with_title("TDModeler")
-            .build(&event_loop)?,
+        event_loop
+            .create_window(WindowAttributes::default().with_title("TDModeler"))
+            .map_err(|e| anyhow::anyhow!(e.to_string()))?,
     );
 
-    let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::default());
+    let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::new_without_display_handle());
     let surface = instance.create_surface(&*window)?;
     let adapter = pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
         compatible_surface: Some(&surface),

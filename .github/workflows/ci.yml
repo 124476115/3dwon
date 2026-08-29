@@ -74,4 +74,4 @@ jobs:
           cp gui-build.log "ci-logs/gui-build-${{ matrix.os }}.log"
           git add ci-logs
           git commit -m "ci: gui build log (${{ matrix.os }})" || true
-          git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/124476115/3dwon.git HEAD:ci-logs || true
+          git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/124476115/3dwon.git HEAD:ci-logs-${{ matrix.os }} || true

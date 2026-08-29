@@ -26,7 +26,7 @@ optional = true
 workspace = true
 optional = true
 default-features = false
-features = ["wayland", "rwh_06"]
+features = ["x11", "wayland", "rwh_06"]
 
 [dependencies.egui]
 workspace = true
