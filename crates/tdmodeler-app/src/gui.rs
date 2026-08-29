@@ -26,7 +26,7 @@ pub fn run() -> Result<()> {
             .build(&event_loop)?,
     );
 
-    let instance = wgpu::Instance::default();
+    let instance = wgpu::Instance::new(&wgpu::InstanceDescriptor::default());
     let surface = pollster::block_on(instance.create_surface(window.as_ref()))?;
     let adapter = pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
         compatible_surface: Some(&surface),
