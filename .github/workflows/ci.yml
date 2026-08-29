@@ -55,18 +55,39 @@ jobs:
           set -o pipefail
           cargo build -p tdmodeler-app --features gui 2>&1 | tee gui-build.log
 
-      # On failure, publish the raw build log to the public ci-logs branch
-      # (via the workflow's own GITHUB_TOKEN) so it can be git-fetched and
-      # read without manual copy/paste.
+      # On failure, publish the raw build log into a PUBLIC issue (via the
+      # workflow's own GITHUB_TOKEN). Issues on a public repo are readable
+      # through the GitHub API without authentication, so the log can be
+      # fetched and inspected without manual copy/paste.
       - name: Publish build log on failure
         if: failure()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.run_id }}
         run: |
-          git config user.name "ci-bot"
-          git config user.email "ci@github.com"
-          mkdir -p ci-logs
-          cp gui-build.log "ci-logs/gui-build-${{ matrix.os }}.log"
-          git add ci-logs
-          git commit -m "ci: gui build log (${{ matrix.os }})" || true
-          git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/124476115/3dwon.git HEAD:ci-logs || true
+          python3 - <<'PY'
+          import os, json, urllib.request, urllib.error
+          token = os.environ['GITHUB_TOKEN']
+          run_id = os.environ['RUN_ID']
+          try:
+              with open('gui-build.log','r',errors='replace') as f:
+                  body = f.read()[-50000:]
+          except Exception as e:
+              body = "no log: %s" % e
+          data = json.dumps({
+              "title": "CI GUI build log (run %s)" % run_id,
+              "body": "```\n" + body + "\n```"
+          }).encode()
+          req = urllib.request.Request(
+              "https://api.github.com/repos/124476115/3dwon/issues",
+              data=data,
+              headers={"Authorization":"Bearer "+token,
+                       "Accept":"application/vnd.github+json",
+                       "User-Agent":"ci"},
+              method="POST")
+          try:
+              with urllib.request.urlopen(req) as r:
+                  print("issue created:", r.status)
+          except urllib.error.HTTPError as e:
+              print("issue create failed:", e.code, e.read().decode()[:500])
+          PY
