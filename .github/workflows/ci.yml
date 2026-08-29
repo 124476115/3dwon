@@ -55,6 +55,7 @@ jobs:
             libegl1-mesa-dev libgl1-mesa-dev libvulkan-dev
 
       - name: Build viewer (compile + link only)
+        shell: bash
         run: |
           set -o pipefail
           cargo build -p tdmodeler-app --features gui 2>&1 | tee gui-build.log
@@ -65,6 +66,7 @@ jobs:
       # the GitHub REST rate limit) and inspected without manual copy/paste.
       - name: Publish build log
         if: always()
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
