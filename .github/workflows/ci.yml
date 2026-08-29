@@ -79,3 +79,58 @@ jobs:
           git add ci-logs
           git commit -m "ci: gui build log (${{ matrix.os }})" || true
           git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/124476115/3dwon.git HEAD:ci-logs-${{ matrix.os }} || true
+
+  # Release build — produces optimized binaries (CLI + GUI) and uploads them
+  # as per-OS artifacts.
+  release:
+    name: Release build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install Linux system libraries
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            pkg-config \
+            libx11-dev libxkbcommon-dev libwayland-dev \
+            libxrandr-dev libxinerama-dev libxcursor-dev libxcomposite-dev \
+            libegl1-mesa-dev libgl1-mesa-dev libvulkan-dev
+
+      - name: Build release viewer
+        shell: bash
+        run: |
+          set -o pipefail
+          cargo build -p tdmodeler-app --features gui --release 2>&1 | tee release-build.log
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: tdmodeler-${{ matrix.os }}
+          path: |
+            target/release/tdmodeler
+            target/release/tdmodeler.exe
+          if-no-files-found: ignore
+
+      - name: Publish build log
+        if: always()
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "ci-bot"
+          git config user.email "ci@github.com"
+          mkdir -p ci-logs
+          echo "OUTCOME=${{ job.status }}" > "ci-logs/release-build-${{ matrix.os }}.log"
+          echo "COMMIT=${{ github.sha }}" >> "ci-logs/release-build-${{ matrix.os }}.log"
+          cat release-build.log >> "ci-logs/release-build-${{ matrix.os }}.log"
+          git add ci-logs
+          git commit -m "ci: release build log (${{ matrix.os }})" || true
+          git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/124476115/3dwon.git HEAD:ci-logs-release-${{ matrix.os }} || true
