@@ -26,8 +26,8 @@ pub fn run() -> Result<()> {
             .build(&event_loop)?,
     );
 
-    let instance = wgpu::Instance::new(&wgpu::InstanceDescriptor::default());
-    let surface = pollster::block_on(instance.create_surface(window.as_ref()))?;
+    let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::default());
+    let surface = instance.create_surface(&*window)?;
     let adapter = pollster::block_on(instance.request_adapter(&wgpu::RequestAdapterOptions {
         compatible_surface: Some(&surface),
         ..Default::default()
@@ -42,7 +42,9 @@ pub fn run() -> Result<()> {
     let caps = surface.get_capabilities(&adapter);
     let format = caps.formats[0];
     let size = window.inner_size();
-    let mut config = surface.get_default_config(&adapter, size.width.max(1), size.height.max(1));
+    let mut config = surface
+        .get_default_config(&adapter, size.width.max(1), size.height.max(1))
+        .ok_or_else(|| anyhow::anyhow!("surface not supported by adapter"))?;
     config.view_formats = vec![];
     surface.configure(&device, &config);
 
@@ -103,7 +105,11 @@ pub fn run() -> Result<()> {
                 }
                 WindowEvent::RedrawRequested => {
                     let aspect = config.width as f32 / config.height.max(1) as f32;
-                    let frame = surface.get_current_texture();
+                    let frame = match surface.get_current_texture() {
+                        wgpu::CurrentSurfaceTexture::Success(t)
+                        | wgpu::CurrentSurfaceTexture::Suboptimal(t) => t,
+                        _ => return,
+                    };
                     let view = frame
                         .texture
                         .create_view(&wgpu::TextureViewDescriptor::default());
