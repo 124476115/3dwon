@@ -5,6 +5,10 @@ on:
     branches: [main, master]
   pull_request:
 
+permissions:
+  contents: write
+  issues: write
+
 env:
   CARGO_TERM_COLOR: always
 
@@ -55,31 +59,29 @@ jobs:
           set -o pipefail
           cargo build -p tdmodeler-app --features gui 2>&1 | tee gui-build.log
 
-      # On failure, publish the raw build log into a PUBLIC issue (via the
-      # workflow's own GITHUB_TOKEN). Issues on a public repo are readable
+      # On failure, publish the raw build log as a PUBLIC commit comment on
+      # the HEAD commit (via the workflow's own GITHUB_TOKEN, granted
+      # contents:write above). Commit comments on a public repo are readable
       # through the GitHub API without authentication, so the log can be
       # fetched and inspected without manual copy/paste.
       - name: Publish build log on failure
         if: failure()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RUN_ID: ${{ github.run_id }}
+          SHA: ${{ github.sha }}
         run: |
           python3 - <<'PY'
           import os, json, urllib.request, urllib.error
           token = os.environ['GITHUB_TOKEN']
-          run_id = os.environ['RUN_ID']
+          sha = os.environ['SHA']
           try:
               with open('gui-build.log','r',errors='replace') as f:
-                  body = f.read()[-50000:]
+                  body = f.read()[-55000:]
           except Exception as e:
               body = "no log: %s" % e
-          data = json.dumps({
-              "title": "CI GUI build log (run %s)" % run_id,
-              "body": "```\n" + body + "\n```"
-          }).encode()
+          data = json.dumps({"body": "```\n" + body + "\n```"}).encode()
           req = urllib.request.Request(
-              "https://api.github.com/repos/124476115/3dwon/issues",
+              "https://api.github.com/repos/124476115/3dwon/commits/%s/comments" % sha,
               data=data,
               headers={"Authorization":"Bearer "+token,
                        "Accept":"application/vnd.github+json",
@@ -87,7 +89,7 @@ jobs:
               method="POST")
           try:
               with urllib.request.urlopen(req) as r:
-                  print("issue created:", r.status)
+                  print("comment created:", r.status)
           except urllib.error.HTTPError as e:
-              print("issue create failed:", e.code, e.read().decode()[:500])
+              print("comment failed:", e.code, e.read().decode()[:500])
           PY
